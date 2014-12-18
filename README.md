@@ -23,7 +23,11 @@ INSTALLATION
 
 Download the repository and the data for the MLSP 2013 Bird Classification Challenge and place the folder mlsp_contest_dataset in the folder containing the code. The data are available [here](https://www.kaggle.com/c/mlsp-2013-birds/data)
 
-The file num_species_ids.txt contains the file IDs and identifiers for the 179 file names in the dataset for which the number of species present in the data set is available. It is derived from the files in the essential_data folder.
+The file *num_species_ids.txt* contains the file IDs and identifiers for the 179 file names in the dataset for which the number of species present in the data set is available. It is derived from the files in the *essential_data* folder.
+
+
+USE
+=======
 
 To compute the acoustic indices for these files open an Ipython shell and type
 	
@@ -39,6 +43,6 @@ To plot the results type
 
 	run plot_acoustic_index.py
 
-A file ent.png is saved which plots the acoustic entropy index with and without audio segmentation. We see that the correlation between the acoustic index and the number of species in the recording is 0.89 with segmentation and 0.17 without it.
+A file *ent.png* is saved which plots the acoustic entropy index with and without audio segmentation. This is Figure 3 in the manuscript. The correlation between the acoustic index and the number of species in the recording is 0.89 with segmentation and 0.17 without it.
 	
 
