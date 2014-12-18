@@ -28,8 +28,7 @@ mel_scale = True # Tell whether cepstral features are extracted on a linear (LFC
 
 
 #segment single species into training and test
-#single_ids=np.array([1,6,8,9,10,18])#species with more that 5 single species recordings
-single_ids=np.array([1,6,9,10,18])#species with more that 5 single species recordings
+single_ids=np.array([1,6,9,10,18])#species with more that 7 single species recordings
 num_files=np.zeros(len(single_ids))
 file1=open('single_species.txt',"r")
 train_id=[]
