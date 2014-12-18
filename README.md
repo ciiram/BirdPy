@@ -52,7 +52,7 @@ A file *ent.png* is saved which plots the acoustic entropy index with and withou
 Bird species recognition
 ------------------------
 
-The file *bird_species_recog.py* performs all the operations of bird species recognition. Here we focus on species for which more than 7 single species recordings are available. The corresponding species IDs are 1,6,9,12 and 18. All single species files as well as the species ID are contained in the file *single_speies.txt*. We use 5 files for training the species specific models and the rest for testing. In total we have 25 training files and 24 testing files.
+The file *bird_species_recog.py* performs all the operations of bird species recognition. Here we focus on species for which more than 7 single species recordings are available. The corresponding species IDs are 1,6,9,12 and 18. All single species files as well as the species ID are contained in the file *single_species.txt*. We use 5 files for training the species specific models and the rest for testing. In total we have 25 training files and 24 testing files.
 The step implemented are:
 
 1. Train a UBM using all the data that contains more than one species per recording. 19 dimensional MFCCs are used and are computed using [bob](https://github.com/idiap/bob). The model is trained using only segments labelled as bird sound.
