@@ -34,6 +34,7 @@ def change_point_detect(mfccs,search_win,win_shift_ms):
 	search_win_frame=search_win/win_shift_ms
 	last_change_point=0
 	change_points=np.array([0])
+	n_ceps=mfccs.shape[1]
 
 	while last_change_point+search_win_frame<mfccs.shape[0]:
 		R=np.zeros(search_win_frame)#Maximum likelihood ratio statistic
@@ -207,6 +208,7 @@ while file1:
 	numspeciesVSnumclust= np.vstack([numspeciesVSnumclust, np.array([float(s1[1]),clust_res[0]])]) if numspeciesVSnumclust.size else np.array([float(s1[1]),clust_res[0]])
 	
 	f+=1
+file1.close()
 np.savetxt('numspeciesVSnumclust.txt',numspeciesVSnumclust)
 
 pb.figure()
