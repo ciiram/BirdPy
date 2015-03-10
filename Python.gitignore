@@ -54,3 +54,10 @@ docs/_build/
 
 # PyBuilder
 target/
+
+
+#Image file
+*.png
+*.eps
+*.jpg
+*.pdf
