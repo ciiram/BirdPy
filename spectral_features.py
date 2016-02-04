@@ -34,15 +34,17 @@ def centroid(Sxx,N,fs,fmin,fmax):
 	
 	num_frames=Sxx.shape[1]
 	centroids=np.zeros(num_frames)
+	band_width=np.zeros(num_frames)
 	freqs=np.arange(Sxx.shape[0])*fs/float(N)
 
 	for i in range(num_frames):
 		centroids[i]=np.sum(Sxx[(freqs>fmin)&(freqs<fmax),i]*freqs[(freqs>fmin)&(freqs<fmax)])/np.sum(Sxx[(freqs>fmin)&(freqs<fmax),i])
+		band_width[i]=np.sum(np.abs(freqs[(freqs>fmin)&(freqs<fmax)]-centroids[i])*Sxx[(freqs>fmin)&(freqs<fmax),i])/np.sum(Sxx[(freqs>fmin)&(freqs<fmax),i])
 
-	return centroids
+	return centroids,band_width
 
 
-def spectral_rolloff(Sxx,N,fs,percent,fmin,fmax):
+def spectral_rolloff(Sxx,N,fs,percent):
 	num_frames=Sxx.shape[1]
 	rolloff=np.zeros(num_frames)
 	S=Sxx/np.sum(Sxx,axis=0)
@@ -77,6 +79,20 @@ def spectral_flux(Sxx):
 	spectral_flux=np.zeros(num_frames-1)
 	for i in range(num_frames-1):
 		spectral_flux[i]=sum((S[:,i+1]-S[:,i])**2)
+
+	return spectral_flux
+
+def spectral_flux_bands(Sxx,N,num_bands):
+	num_frames=Sxx.shape[1]
+	spectral_flux=np.zeros((num_bands,num_frames-1))
+	band_lim=.5**np.arange(num_bands)*N*.5
+	band_lim=np.concatenate((np.array([0]),band_lim[::-1]))
+	S=Sxx/np.sum(Sxx,axis=0)
+	spectral_flux=np.zeros((num_bands,num_frames-1))
+	for i in range(1,num_frames):
+		for j in range(num_bands):
+			spectral_flux[j,i-1]=sum((S[band_lim[j]:band_lim[j+1],i]-S[band_lim[j]:band_lim[j+1],i-1])**2)
+			
 
 	return spectral_flux
 	
